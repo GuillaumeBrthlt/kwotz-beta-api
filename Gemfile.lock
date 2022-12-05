@@ -84,6 +84,7 @@ GEM
     devise-jwt (0.10.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.6)
+    diff-lcs (1.5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dry-auto_inject (0.9.0)
@@ -138,6 +139,7 @@ GEM
     nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.9-x86_64-darwin)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.5)
@@ -186,6 +188,19 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.0)
     thor (1.2.1)
     timeout (0.3.0)
     tzinfo (2.0.5)
@@ -209,6 +224,7 @@ PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -220,10 +236,11 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors (~> 1.1)
   rails (~> 7.0.4)
+  rspec (~> 3.12)
   tzinfo-data
 
 RUBY VERSION
    ruby 3.0.4p208
 
 BUNDLED WITH
-   2.3.17
+   2.3.26
