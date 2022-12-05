@@ -52,3 +52,5 @@ gem "devise-jwt", "~> 0.10.0"
 gem "rack-cors", "~> 1.1"
 
 gem "mailjet", "~> 1.7"
+
+gem "rspec", "~> 3.12"
