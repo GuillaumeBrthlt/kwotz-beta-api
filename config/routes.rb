@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :supplier_contacts
   resources :suppliers
   devise_for :users,
              controllers: {
