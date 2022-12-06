@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects
   resources :supplier_contacts
   resources :suppliers
   resources :user_profiles
