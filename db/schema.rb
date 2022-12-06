@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_095318) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_104700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cold_rooms", force: :cascade do |t|
+    t.integer "temperature"
+    t.string "condensing_unit"
+    t.boolean "prod_outside"
+    t.integer "refrigerant_type"
+    t.integer "length"
+    t.integer "width"
+    t.integer "height"
+    t.integer "volume"
+    t.string "product_types"
+    t.string "entries_frequency"
+    t.integer "entries_quantity"
+    t.integer "heat_sources_power"
+    t.text "heat_sources"
+    t.text "comment"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_cold_rooms_on_project_id"
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
@@ -88,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_095318) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cold_rooms", "projects"
   add_foreign_key "projects", "supplier_contacts"
   add_foreign_key "projects", "users"
   add_foreign_key "supplier_contacts", "suppliers"

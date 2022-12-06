@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cold_rooms
   resources :projects
   resources :supplier_contacts
   resources :suppliers
