@@ -6,7 +6,7 @@ class CreateUserProfiles < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :zipcode
       t.string :city
-      t.string :function
+      t.string :role
       t.string :first_name
       t.string :last_name
       t.boolean :complete

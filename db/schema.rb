@@ -83,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_133738) do
     t.string "address"
     t.string "zipcode"
     t.string "city"
-    t.string "function"
+    t.string "role"
     t.string "first_name"
     t.string "last_name"
     t.boolean "complete"
