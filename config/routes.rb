@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
   resources :supplier_contacts
   resources :suppliers
   resources :user_profiles
