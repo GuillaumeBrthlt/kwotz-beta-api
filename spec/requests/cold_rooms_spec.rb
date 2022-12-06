@@ -13,15 +13,54 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/cold_rooms", type: :request do
+  before(:each) do
+    @user = User.create(email: "test@test.com", password: "azerty")
+    @supplier = Supplier.create(user_id: @user.id, alias: "test", address: "address test", city: "city test", zipcode: "test", favorite: true)
+    @supplier_contact = SupplierContact.create(supplier_id: @supplier.id, first_name: "first test", last_name: "last test", email: "test@email.fr")
+    @project = Project.create(user_id: @user.id, name: "test", status: 0, message: "I am a test message", supplier_contact_id: @supplier_contact.id)
+  
+
   # This should return the minimal set of attributes required to create a valid
   # ColdRoom. As you add validations to ColdRoom, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      temperature: 3,
+      condensing_unit: "test condensing",
+      prod_outside: true,
+      refrigerant_type: 5,
+      length: 35,
+      width: 35,
+      height: 35,
+      volume: 80,
+      product_types: "name enterprise",
+      entries_frequency: "per week",
+      entries_quantity: 200,
+      heat_sources_power: 35,
+      heat_sources: "heat sources",
+      comment: "I am a comment",
+      project_id: 1
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      temperature: nil,
+      condensing_unit: "",
+      prod_outside: nil,
+      refrigerant_type: nil,
+      length: nil,
+      width: nil,
+      height: nil,
+      volume: nil,
+      product_types: "",
+      entries_frequency: "",
+      entries_quantity: nil,
+      heat_sources_power: nil,
+      heat_sources: "",
+      comment: "",
+      project_id: nil
+    }
   }
 
   # This should return the minimal set of values that should be in the headers
@@ -124,4 +163,5 @@ RSpec.describe "/cold_rooms", type: :request do
       }.to change(ColdRoom, :count).by(-1)
     end
   end
+end
 end
