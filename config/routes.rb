@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :user_profiles
   resources :suppliers
+  resources :user_profiles
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',
