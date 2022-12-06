@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+=======
   resources :supplier_contacts
-  resources :user_profiles
   resources :suppliers
+  resources :user_profiles
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',

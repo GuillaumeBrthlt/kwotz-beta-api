@@ -10,7 +10,7 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers/1
   def show
-    @supplier.user_id == current_user.id
+    return unless @supplier.user == current_user
     render json: @supplier
   end
 
@@ -18,7 +18,6 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(supplier_params)
     @supplier.user == current_user
-
 
     if @supplier.save
       render json: @supplier, status: :created, location: @supplier
@@ -29,7 +28,7 @@ class SuppliersController < ApplicationController
 
   # PATCH/PUT /suppliers/1
   def update
-    if @supplier.update(supplier_params) && @property.user == current_user
+    if @supplier.update(supplier_params) && @supplier.user == current_user
       render json: @supplier
     else
       render json: @supplier.errors, status: :unprocessable_entity

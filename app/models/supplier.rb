@@ -4,5 +4,4 @@ class Supplier < ApplicationRecord
   validates :address, presence: true
   validates :city, presence: true
   validates :zipcode, presence: true
-  
 end
