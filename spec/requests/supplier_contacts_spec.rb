@@ -13,17 +13,29 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/supplier_contacts", type: :request do
+  before(:each) do
+    @user = User.create(email: 'test@mail.com', password: 'azerty')
   # This should return the minimal set of attributes required to create a valid
   # SupplierContact. As you add validations to SupplierContact, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      supplier_id: 1,
+      first_name: "Prénom",
+      last_name: "Nom",
+      email: "supmail@test.com"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
+    {
+      supplier_id: nil,
+      first_name: " ",
+      last_name: " ",
+      email: " "
+    }   
+  }  
+  
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
   # SupplierContactsController, or in your router and rack
@@ -53,13 +65,13 @@ RSpec.describe "/supplier_contacts", type: :request do
       it "creates a new SupplierContact" do
         expect {
           post supplier_contacts_url,
-               params: { supplier_contact: valid_attributes }, headers: valid_headers, as: :json
+              params: { supplier_contact: valid_attributes }, headers: valid_headers, as: :json
         }.to change(SupplierContact, :count).by(1)
       end
 
       it "renders a JSON response with the new supplier_contact" do
         post supplier_contacts_url,
-             params: { supplier_contact: valid_attributes }, headers: valid_headers, as: :json
+            params: { supplier_contact: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
@@ -69,13 +81,13 @@ RSpec.describe "/supplier_contacts", type: :request do
       it "does not create a new SupplierContact" do
         expect {
           post supplier_contacts_url,
-               params: { supplier_contact: invalid_attributes }, as: :json
+              params: { supplier_contact: invalid_attributes }, as: :json
         }.to change(SupplierContact, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new supplier_contact" do
         post supplier_contacts_url,
-             params: { supplier_contact: invalid_attributes }, headers: valid_headers, as: :json
+            params: { supplier_contact: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
@@ -124,4 +136,5 @@ RSpec.describe "/supplier_contacts", type: :request do
       }.to change(SupplierContact, :count).by(-1)
     end
   end
+end
 end
