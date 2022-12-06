@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_091046) do
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
+  create_table "supplier_contacts", force: :cascade do |t|
+    t.bigint "supplier_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_supplier_contacts_on_supplier_id"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "alias"
     t.string "address"
@@ -66,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_091046) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "supplier_contacts", "suppliers"
   add_foreign_key "suppliers", "users"
   add_foreign_key "user_profiles", "users"
 end
