@@ -9,7 +9,6 @@ Rails.application.routes.draw do
              controllers: {
                sessions: 'users/sessions',
                registrations: 'users/registrations',
-               confirmations: 'confirmations/confirmations',
              }
 
   get '/member-data', to: 'members#show'
