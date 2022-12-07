@@ -2,5 +2,9 @@
 
 <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
-<p>And after that, you'll can <%= link_to 'Login my account', "http://127.0.0.1:5173/login" %></p>
+<% reset_password_link = "http://localhost:5173/confirmation?confirmation_token=#{@token}" %>
+<%= link_to reset_password_link do %>
+   <button class="new-password-button">
+     Confirmation register
+   </button>
+<% end %>
