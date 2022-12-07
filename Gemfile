@@ -56,3 +56,4 @@ gem "mailjet", "~> 1.7"
 gem "rspec", "~> 3.12"
 
 gem "rspec-rails", "~> 6.0"
+
