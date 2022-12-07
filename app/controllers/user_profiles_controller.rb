@@ -21,7 +21,7 @@ class UserProfilesController < ApplicationController
     @user_profile.user = current_user
 
     if @user_profile.save
-      @user_profile.update(complete: true)
+      @user_profile.user.update(has_profile: true)
       render json: @user_profile, status: :created, location: @user_profile
     else
       render json: @user_profile.errors, status: :unprocessable_entity
@@ -52,6 +52,6 @@ class UserProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_profile_params
-      params.require(:user_profile).permit(:user_id, :company, :address, :zipcode, :city, :role, :first_name, :complete, :last_name, :shipping_alias, :shipping_address, :shipping_zipcode, :shipping_city, :phone_number)
+      params.require(:user_profile).permit(:user_id, :company, :address, :zipcode, :city, :role, :first_name, :last_name, :shipping_alias, :shipping_address, :shipping_zipcode, :shipping_city, :phone_number)
     end
 end
