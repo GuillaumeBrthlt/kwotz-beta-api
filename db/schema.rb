@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_133738) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_091527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,7 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_133738) do
     t.string "role"
     t.string "first_name"
     t.string "last_name"
-    t.boolean "complete"
     t.string "shipping_alias"
     t.string "shipping_address"
     t.string "shipping_zipcode"
@@ -109,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_133738) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "has_profile", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

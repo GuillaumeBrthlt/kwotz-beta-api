@@ -9,7 +9,6 @@ class CreateUserProfiles < ActiveRecord::Migration[7.0]
       t.string :role
       t.string :first_name
       t.string :last_name
-      t.boolean :complete
       t.string :shipping_alias
       t.string :shipping_address
       t.string :shipping_zipcode
