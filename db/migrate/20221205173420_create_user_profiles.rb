@@ -13,7 +13,7 @@ class CreateUserProfiles < ActiveRecord::Migration[7.0]
       t.string :shipping_address
       t.string :shipping_zipcode
       t.string :shipping_city
-      t.integer :phone_number
+      t.string :phone_number
       t.timestamps
     end
   end
