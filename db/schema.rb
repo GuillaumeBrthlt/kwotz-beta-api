@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_091527) do
     t.string "shipping_address"
     t.string "shipping_zipcode"
     t.string "shipping_city"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
