@@ -5,7 +5,7 @@ class UserProfile < ApplicationRecord
   validates :address, presence: true
   validates :zipcode, presence: true
   validates :city, presence: true
-  validates :function, presence: true
+  validates :role, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :shipping_alias, presence: true
