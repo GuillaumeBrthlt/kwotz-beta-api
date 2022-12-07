@@ -21,6 +21,7 @@ class UserProfilesController < ApplicationController
     @user_profile.user = current_user
 
     if @user_profile.save
+      @user_profile.update(complete: true)
       render json: @user_profile, status: :created, location: @user_profile
     else
       render json: @user_profile.errors, status: :unprocessable_entity
