@@ -1,0 +1,10 @@
+<p>Welcome <%= @email %>!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<% reset_password_link = "http://localhost:5173/confirmation?confirmation_token=#{@token}" %>
+<%= link_to reset_password_link do %>
+   <button class="new-password-button">
+     Confirmation register
+   </button>
+<% end %>
