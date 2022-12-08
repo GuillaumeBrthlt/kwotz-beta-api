@@ -1,6 +1,6 @@
 class SupplierContactsController < ApplicationController
   before_action :set_supplier_contact, only: %i[ show update destroy ]
-  before_action :authenticate_user, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /supplier_contacts
   def index

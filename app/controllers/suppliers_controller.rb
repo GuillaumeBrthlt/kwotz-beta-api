@@ -1,5 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: %i[ show update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /suppliers
   def index
@@ -17,7 +18,7 @@ class SuppliersController < ApplicationController
   # POST /suppliers
   def create
     @supplier = Supplier.new(supplier_params)
-    @supplier.user == current_user
+    @supplier.user = current_user
 
     if @supplier.save
       render json: @supplier, status: :created, location: @supplier
