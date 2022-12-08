@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_091527) do
     t.string "name"
     t.integer "status", default: 0
     t.text "message"
-    t.bigint "supplier_contact_id", null: false
+    t.bigint "supplier_contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["supplier_contact_id"], name: "index_projects_on_supplier_contact_id"
