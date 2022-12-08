@@ -5,7 +5,7 @@ class CreateProjects < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :status, default: 0
       t.text :message
-      t.references :supplier_contact, null: false, foreign_key: true
+      t.references :supplier_contact, foreign_key: true
 
       t.timestamps
     end
