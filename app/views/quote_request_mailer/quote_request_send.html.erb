@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <div style="background-color: #180124; height: 100px">
+        <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z </h1>
+      </div>
+      <div style="padding: 70px 20px 90px 20px;">
+        <h2>Bonjour!</h2>
+        <p>Vous avez reçu une nouvelle demande de prix de <%= @quote_request.user_profile.first_name %> <%= @quote_request.user_profile.last_name %></p>
+        <%consultation_link = "#{Rails.application.credentials.mailer[:front_url]}consultation/#{@quote_request.id}"%>
+        <p>Pour y accéder, veuillez cliquer sur le lien suivant: </p>
+        <%= link_to consultation_link do %>
+          <button class="new-password-button">
+            Visiter la consultation
+          </button>
+        <% end %>
+      </div>
+      <footer style="height: 60px; background-color: transparent; text-align: center;">
+        <p  style="text-muted">Copyright © Kwot'z 2022</p>
+      </footer>
+  </body>
+</html>
