@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_200929) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_125453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_200929) do
     t.datetime "updated_at", null: false
     t.index ["supplier_contact_id"], name: "index_projects_on_supplier_contact_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "quote_requests", force: :cascade do |t|
+    t.string "email"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_quote_requests_on_project_id"
   end
 
   create_table "supplier_contacts", force: :cascade do |t|
@@ -118,6 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_200929) do
   add_foreign_key "cold_rooms", "projects"
   add_foreign_key "projects", "supplier_contacts"
   add_foreign_key "projects", "users"
+  add_foreign_key "quote_requests", "projects"
   add_foreign_key "supplier_contacts", "suppliers"
   add_foreign_key "suppliers", "users"
   add_foreign_key "user_profiles", "users"
