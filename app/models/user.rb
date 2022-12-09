@@ -6,5 +6,6 @@ class User < ApplicationRecord
 	:jwt_authenticatable, :confirmable,
 	jwt_revocation_strategy: JwtDenylist
   has_many :suppliers
+  has_many :projects
 
 end
