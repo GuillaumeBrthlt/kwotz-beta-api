@@ -1,0 +1,11 @@
+<p>Welcome <%= @email %>!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<% host_url = Rails.application.credentials.mailer[:front_url]%>
+<% confirmation_link = "#{@host_url}confirmation?confirmation_token=#{@token}" %>
+<%= link_to confirmation_link do %>
+   <button class="new-password-button">
+     Confirmation register
+   </button>
+<% end %>
