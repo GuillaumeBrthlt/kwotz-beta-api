@@ -1,5 +1,5 @@
 class UserProfile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   validates :user_id, presence: true
   validates :company, presence: true
   validates :address, presence: true
