@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
 	:jwt_authenticatable, :confirmable,
 	jwt_revocation_strategy: JwtDenylist
-  has_many :suppliers
-  has_many :projects
-  has_one :user_profile
+  has_many :suppliers, dependent: :delete_all
+  has_many :projects, dependent: :delete_all
+  has_one :user_profile, dependent: :destroy
 
 end
