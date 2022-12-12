@@ -30,7 +30,8 @@ class UserProfilesController < ApplicationController
 
   # PATCH/PUT /user_profiles/1
   def update
-    if @user_profile.update(user_profile_params) && @user_profile.user == current_user
+    return unless @user_profile.user == current_user
+    if @user_profile.update(user_profile_params) 
       render json: @user_profile
     else
       render json: @user_profile.errors, status: :unprocessable_entity
