@@ -1,5 +1,5 @@
 class ColdRoom < ApplicationRecord
-  belongs_to :project
+  belongs_to :project, dependent: :destroy
   validates :temperature, presence: true
   validates :condensing_unit, presence: true
   validates :refrigerant_type, presence: true

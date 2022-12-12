@@ -1,5 +1,5 @@
 class SupplierContact < ApplicationRecord
-  belongs_to :supplier
+  belongs_to :supplier, dependent: :destroy
   has_one :user, through: :supplier
 
   validates :first_name, presence: true
