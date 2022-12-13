@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_09_125453) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_095834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_125453) do
     t.integer "temperature"
     t.string "condensing_unit"
     t.boolean "prod_outside"
-    t.integer "refrigerant_type"
+    t.string "refrigerant_type"
     t.integer "length"
     t.integer "width"
     t.integer "height"

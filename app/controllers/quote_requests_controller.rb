@@ -6,7 +6,7 @@ class QuoteRequestsController < ApplicationController
   def index
     @quote_requests = QuoteRequest.all
 
-    render json: @quote_requests
+    render json: @quote_requests, :include => [:user, :user_profile, :cold_rooms, :project]
   end
 
   # GET /quote_requests/1
