@@ -47,6 +47,6 @@ class QuoteRequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_request_params
-      params.require(:quote_request).permit(:email, :project_id)
+      params.require(:quote_request).permit(:email, :project_id, :document, :response_comment, :response_status)
     end
 end
