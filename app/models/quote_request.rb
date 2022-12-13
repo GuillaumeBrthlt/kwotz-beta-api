@@ -4,7 +4,11 @@ class QuoteRequest < ApplicationRecord
   has_one :user_profile, through: :user, dependent: :destroy
   has_many :cold_rooms, through: :project, dependent: :delete_all
   after_create :send_mail
+  after_create :update_project
 
+  def update_project
+    self.project.sent!
+  end
 
   def send_mail
     user = self.user
