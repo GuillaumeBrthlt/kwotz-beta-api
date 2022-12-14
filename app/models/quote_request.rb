@@ -18,12 +18,9 @@ class QuoteRequest < ApplicationRecord
 
   def document_url
     if document.attached?
-      puts "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
       document.each_with_object([]) do |doc, array|
-        puts doc
         array<<Rails.application.routes.url_helpers.url_for(doc)
       end
     end
-    #  Rails.application.routes.url_helpers.url_for(document) if document.attached?
   end
 end
