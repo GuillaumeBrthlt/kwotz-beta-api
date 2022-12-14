@@ -54,3 +54,5 @@ gem "mailjet", "~> 1.7"
 gem "rspec", "~> 3.12"
 gem "rspec-rails", "~> 6.0"
 gem "aws-sdk-s3", "~> 1.117", require: false
+
+gem "jsonapi-serializer", "~> 2.2"
