@@ -1,9 +1,9 @@
 class QuoteRequest < ApplicationRecord
   belongs_to :project
-  has_one :user, through: :project, dependent: :destroy
-  has_one :user_profile, through: :user, dependent: :destroy
+  has_one :user, through: :project
+  has_one :user_profile, through: :user
   has_many_attached :document, dependent: :destroy
-  has_many :cold_rooms, through: :project, dependent: :delete_all
+  has_many :cold_rooms, through: :project
   after_create :send_mail
   after_create :update_project
 
