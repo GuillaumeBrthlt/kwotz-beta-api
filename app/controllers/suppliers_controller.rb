@@ -6,7 +6,7 @@ class SuppliersController < ApplicationController
   def index
     @suppliers = Supplier.all
 
-    render json: @suppliers
+    render json: @suppliers, :include => :supplier_contacts
   end
 
   # GET /suppliers/1
