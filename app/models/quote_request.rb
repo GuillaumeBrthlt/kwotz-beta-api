@@ -5,6 +5,7 @@ class QuoteRequest < ApplicationRecord
   has_many_attached :document, dependent: :destroy
   has_many :cold_rooms, through: :project
   after_create :send_mail
+  after_update :mail_document
   after_create :update_project
 
   def update_project
@@ -14,6 +15,13 @@ class QuoteRequest < ApplicationRecord
   def send_mail
     user = self.user
     QuoteRequestMailer.quote_request_send(user, self).deliver_now
+  end
+
+  def mail_document
+    if document.attached?
+      user = self.user
+      QuoteRequestMailer.document_attached_send(user, self).deliver_now
+    end
   end
 
   def document_url
