@@ -2,6 +2,7 @@ class QuoteRequest < ApplicationRecord
   belongs_to :project
   has_one :user, through: :project, dependent: :destroy
   has_one :user_profile, through: :user, dependent: :destroy
+  has_many_attached :document, dependent: :destroy
   has_many :cold_rooms, through: :project, dependent: :delete_all
   after_create :send_mail
   after_create :update_project
@@ -15,4 +16,11 @@ class QuoteRequest < ApplicationRecord
     QuoteRequestMailer.quote_request_send(user, self).deliver_now
   end
 
+  def document_url
+    if document.attached?
+      document.each_with_object([]) do |doc, array|
+        array<<Rails.application.routes.url_helpers.url_for(doc)
+      end
+    end
+  end
 end
