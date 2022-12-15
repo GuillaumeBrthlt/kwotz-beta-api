@@ -12,8 +12,7 @@ class QuoteRequest < ApplicationRecord
   end
 
   def send_mail
-    user = self.user
-    QuoteRequestMailer.quote_request_send(user, self).deliver_now
+    QuoteRequestMailer.quote_request_send(self).deliver_now
   end
 
   def document_url
