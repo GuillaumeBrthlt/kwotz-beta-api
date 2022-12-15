@@ -27,7 +27,12 @@ class QuoteRequestsController < ApplicationController
 
   # PATCH/PUT /quote_requests/1
   def update
+    if @quote_request.document.attached? && quote_request_params.include?("document")
+      @quote_request.document.purge
+    end
+
     if @quote_request.update(quote_request_params)
+      @quote_request.update(response_status: true)
       render json: @quote_request
     else
       render json: @quote_request.errors, status: :unprocessable_entity
