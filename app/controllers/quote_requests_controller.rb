@@ -6,7 +6,7 @@ class QuoteRequestsController < ApplicationController
   def index
     @quote_requests = QuoteRequest.all
 
-    render json: QuoteRequestSerializer.new(@quote_requests).serializable_hash[:data][:attributes]
+    render json: QuoteRequestSerializer.new(@quote_requests).serializable_hash[:data]
   end
 
   # GET /quote_requests/1
