@@ -27,12 +27,11 @@ class QuoteRequestsController < ApplicationController
 
   # PATCH/PUT /quote_requests/1
   def update
-    if @quote_request.document.attached? && quote_request_params.include?("document")
+    if @quote_request.document.attached? && quote_request_update_params.include?("document")
       @quote_request.document.purge
     end
 
-    if @quote_request.update(quote_request_params)
-      @quote_request.update(response_status: true)
+    if @quote_request.update(quote_request_update_params)
       render json: @quote_request
     else
       render json: @quote_request.errors, status: :unprocessable_entity
@@ -53,5 +52,10 @@ class QuoteRequestsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def quote_request_params
       params.require(:quote_request).permit(:email, :project_id, :response_comment, document: [] )
+    end
+
+    def quote_request_update_params
+      default = { response_status: true }
+      params.require(:quote_request).permit(:email, :project_id, :response_comment, document: []).reverse_merge(default)
     end
 end
