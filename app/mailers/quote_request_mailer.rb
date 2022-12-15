@@ -6,4 +6,8 @@ class QuoteRequestMailer < ApplicationMailer
     mail(to: quote_request.email, subject: 'Nouvelle demande de prix')
   end
 
+  def document_attached_send(user, quote_request)
+    @quote_request = quote_request
+    mail(to: user.email, subject: 'Un nouveau devis vous est proposé')
+  end
 end
