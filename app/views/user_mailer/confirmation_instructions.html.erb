@@ -1,11 +1,30 @@
-<p>Welcome <%= @email %>!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <div style="background-color: #180124; height: 100px">
+        <h1 style="text-align:center; font-size:2.2em; color: white; padding: 25px;">Kwot'z </h1>
+      </div>
+      <div style="padding: 70px 20px 90px 20px;">
+        <h2>Bonjour <%= @email %>!</h2>
+        <p>Bienvenue sur Kwot'z </p>
 
-<p>You can confirm your account email through the link below:</p>
+        <p>Cliquez sur le bouton pour confimer vôtre inscription:</p>
 
-<% host_url = Rails.application.credentials.mailer[:front_url]%>
-<% confirmation_link = "#{host_url}confirmation?confirmation_token=#{@token}" %>
-<%= link_to confirmation_link do %>
-   <button class="new-password-button">
-     Confirmation register
-   </button>
-<% end %>
+        <% host_url = Rails.application.credentials.mailer[:front_url]%>
+
+        <% confirmation_link = "#{host_url}confirmation?confirmation_token=#{@token}" %>
+        
+        <%= link_to confirmation_link do %>
+          <button class="new-password-button">
+            Confirmer mon inscription
+          </button>
+        <% end %>
+      </div>
+      <footer style="height: 60px; background-color: transparent; text-align: center;">
+        <p  style="text-muted">Copyright © Kwot'z 2022</p>
+      </footer>
+  </body>
+</html>
