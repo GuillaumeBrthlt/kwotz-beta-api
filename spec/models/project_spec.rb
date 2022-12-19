@@ -16,9 +16,9 @@ RSpec.describe Project, type: :model do
     
     describe 'a bad Project attributes' do
       it 'should not be valid with an expected attribute missing' do
-        bad_Project = Project.create(user_id: @user.id, status: 0, message: "I test things", supplier_contact_id: @supplier_contact.id)
+        bad_Project = Project.create(status: 0, message: "I test things", supplier_contact_id: @supplier_contact.id)
         expect(bad_Project).not_to be_valid
-        expect(bad_Project.errors.include?(:name)).to eq(true)
+        expect(bad_Project.errors.include?(:user)).to eq(true)
       end
     end
   end
